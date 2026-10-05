@@ -1,0 +1,60 @@
+:root{--bg:#fff;--ink:#212529;--muted:#6c757d;--accent:#1c6e8c;--rule:#e5e8ea;--panel:#f2f6f7;
+  --font:"Source Sans 3",system-ui,sans-serif;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root{--bg:#14191b;--ink:#e6ecee;--muted:#9aa8ad;--accent:#6cc0dc;--rule:#2a3539;--panel:#1c2528}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.05rem/1.7 var(--font)}
+a{color:var(--accent);text-underline-offset:.18em}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:var(--bg);padding:.5rem}
+.wrap{max-width:52rem;margin:0 auto;padding:0 1.5rem}
+
+header.top{border-bottom:1px solid var(--rule)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;padding-bottom:1rem;gap:1rem;flex-wrap:wrap}
+.brand{font-weight:600;color:var(--ink);text-decoration:none;font-size:1.15rem}
+header.top nav{display:flex;gap:1.5rem}
+header.top nav a{color:var(--muted);text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
+header.top nav a:hover{color:var(--ink)}
+header.top nav a[aria-current]{color:var(--ink);border-color:var(--accent)}
+
+main{padding:2.5rem 0 3rem}
+h1{font-size:2.4rem;font-weight:300;line-height:1.2;margin:0 0 .4rem}
+h1 b{font-weight:700}
+.tagline{color:var(--muted);margin:0 0 1.5rem;font-size:1.1rem}
+h2{font-size:1.5rem;font-weight:600;margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+h3{font-size:1.05rem;margin:0 0 .2rem}
+p{margin:0 0 1rem}
+
+.profile{display:grid;grid-template-columns:1fr 15rem;gap:2rem;align-items:start}
+.profile .photo{grid-column:2;grid-row:1}
+.photo img,.photo .ini{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.photo .ini{display:grid;place-items:center;background:var(--panel);color:var(--accent);font-size:3.5rem;font-weight:600}
+.social{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin:1.25rem 0 0;padding:0;list-style:none;font-size:.9rem}
+.social a{display:block;border:1px solid var(--rule);border-radius:99px;padding:.15rem .8rem;text-decoration:none}
+.social a:hover{background:var(--panel)}
+.bio{grid-column:1;grid-row:1}
+
+table.rows{width:100%;border-collapse:collapse}
+.rows th,.rows td{text-align:left;vertical-align:top;padding:.55rem 1rem .55rem 0;border-bottom:1px solid var(--rule)}
+.rows th{width:8.5rem;font-weight:500;color:var(--muted);white-space:nowrap}
+.rows td small{display:block;color:var(--muted)}
+
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.filters button{font:500 .85rem var(--font);background:none;color:var(--ink);border:1px solid var(--rule);border-radius:99px;padding:.25rem .9rem;cursor:pointer}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.year{font-size:1.3rem;font-weight:300;color:var(--muted);margin:1.75rem 0 .5rem}
+.pubs{list-style:none;padding:0;margin:0}
+.pubs li{margin-bottom:1.1rem;font-size:1rem;line-height:1.5}
+.pubs .t{font-weight:600}
+.tag{font-size:.75rem;font-weight:600;background:var(--panel);color:var(--accent);border-radius:4px;padding:.1rem .5rem;margin-left:.3rem;white-space:nowrap}
+.lk a{font-size:.8rem;margin-right:.7rem}
+.highlight{background:var(--panel);border-left:4px solid var(--accent);padding:.8rem 1rem;border-radius:0 6px 6px 0}
+.btn{display:inline-block;border:1px solid var(--accent);border-radius:6px;padding:.3rem 1rem;text-decoration:none;margin-bottom:1rem}
+footer{border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem;padding:1rem 0 2rem}
+
+@media (max-width:44rem){
+  .profile{display:block}.photo{width:11rem;margin:0 auto 1.5rem}
+  h1{font-size:2rem}.rows th{display:block;width:auto;border:0;padding-bottom:0}.rows td{display:block}
+  .rows tr{display:block;border-bottom:1px solid var(--rule);padding:.4rem 0}.rows th,.rows td{border:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
