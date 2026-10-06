@@ -1,10 +1,17 @@
 // Shared header, footer, photo fallback and publication list.
 const PAGES = [["index.html", "About"], ["publications.html", "Publications"]];
+const SOCIAL = [
+  ["mailto:afsana.291094@gmail.com", "Email", "fa-solid fa-envelope"],
+  ["https://scholar.google.com/citations?hl=en&user=tP5eQtcAAAAJ&view_op=list_works&authuser=1&sortby=pubdate", "Google Scholar", "ai ai-google-scholar"],
+  ["https://github.com/Afsana2910", "GitHub", "fa-brands fa-github"],
+  ["https://www.linkedin.com/in/afsanakhan2910/", "LinkedIn", "fa-brands fa-linkedin-in"],
+  ["files/CV.pdf", "CV", "CV"]
+];
 const page = document.body.dataset.page;
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
 document.getElementById("top").innerHTML = `<div class="wrap">
-  <a class="brand" href="index.html">Afsana Khan</a>
+  <div class="top-social">${SOCIAL.map(([href, label, icon]) => `<a href="${href}" aria-label="${label}" title="${label}">${icon === "CV" ? "CV" : `<i class="${icon}" aria-hidden="true"></i>`}</a>`).join("")}</div>
   <div class="header-actions">
     <nav aria-label="Main">${PAGES.map(([h, n]) => `<a href="${h}"${h === page ? ' aria-current="page"' : ""}>${n}</a>`).join("")}</nav>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>

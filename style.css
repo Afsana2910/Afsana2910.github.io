@@ -26,8 +26,8 @@ h3{font-size:1.05rem;margin:0 0 .2rem}
 p{margin:0 0 1rem}
 
 .profile{display:grid;grid-template-columns:1fr 15rem;gap:2rem;align-items:start}
-.profile .photo{grid-column:2;grid-row:1;aspect-ratio:1;border-radius:50%;overflow:hidden}
-.photo img,.photo .ini{display:block;width:100%;height:100%;border:0;border-radius:50%;object-fit:contain;background:transparent;box-shadow:none}
+.profile .photo{grid-column:2;grid-row:1;aspect-ratio:1;overflow:hidden}
+.photo img,.photo .ini{display:block;width:100%;height:100%;border:0;border-radius:0;object-fit:contain;background:transparent;box-shadow:none}
 .photo .ini{display:grid;place-items:center;background:var(--panel);color:var(--accent);font-size:3.5rem;font-weight:600}
 .social{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin:1.25rem 0 0;padding:0;list-style:none;font-size:.9rem}
 .social a{display:block;border:1px solid var(--rule);border-radius:99px;padding:.15rem .8rem;text-decoration:none}
@@ -42,6 +42,7 @@ table.rows{width:100%;border-collapse:collapse}
 .latest-label{display:block;width:max-content;margin-top:.25rem;padding:.1rem .45rem;border-radius:4px;background:var(--accent);color:var(--bg);font-size:.72rem;font-weight:600;line-height:1.3;animation:latest-pulse 2.4s ease-in-out .8s infinite}
 @keyframes news-enter{from{opacity:0;transform:translateY(-.45rem)}to{opacity:1;transform:translateY(0)}}
 @keyframes latest-pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 35%,transparent)}50%{opacity:.75;box-shadow:0 0 0 .3rem color-mix(in srgb,var(--accent) 0%,transparent)}}
+@keyframes accent-shift{0%,100%{color:var(--accent)}50%{color:color-mix(in srgb,var(--accent) 65%,#d4879b)}}
 
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
 .filters button{font:500 .85rem var(--font);background:none;color:var(--ink);border:1px solid var(--rule);border-radius:99px;padding:.25rem .9rem;cursor:pointer}
@@ -70,7 +71,7 @@ footer{border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem;padd
   h1{font-size:2rem}.rows th{display:block;width:auto;border:0;padding-bottom:0}.rows td{display:block}
   .rows tr{display:block;border-bottom:1px solid var(--rule);padding:.4rem 0}.rows th,.rows td{border:0}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rows tr.latest,.latest-label{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rows tr.latest,.latest-label,.tagline-divider{animation:none}.top-social a{transition:none}}
 
 /* Centered academic profile layout */
 :root{--bg:#fff;--ink:#2b2023;--muted:#756a6e;--accent:#7b2940;--rule:#eadde1;--panel:#fbf5f6;
@@ -88,6 +89,10 @@ header.top nav a{font-size:.9rem;color:var(--ink);padding:.25rem 0;border-bottom
 header.top nav a:hover,header.top nav a[aria-current]{color:var(--accent)}
 header.top nav a[aria-current]{border-color:var(--accent)}
 .header-actions{display:flex;align-items:center;gap:1.25rem}
+.top-social{display:flex;align-items:center;gap:1rem}
+.top-social a{color:var(--accent);font-size:1.25rem;line-height:1;transition:color .25s ease,transform .25s ease}
+.top-social a:hover{color:var(--ink);transform:translateY(-2px)}
+.top-social .ai-google-scholar{font-size:1.45rem}
 .theme-toggle{display:grid;place-items:center;width:2.35rem;height:2.35rem;padding:0;border:1px solid var(--rule);border-radius:50%;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
 .theme-toggle:hover{background:var(--panel);border-color:var(--accent);color:var(--accent)}
 .theme-toggle i{font-size:1rem}
@@ -95,9 +100,10 @@ main{padding:3.2rem 0 4rem}
 h1{font-size:3.15rem;font-weight:400;letter-spacing:-.035em;line-height:1.1;margin:0 0 .35rem}
 h1 b{font-weight:700;color:var(--ink)}
 .tagline{margin:0 0 2rem;color:var(--ink);font-size:1.15rem;line-height:1.45}
+.tagline-divider{color:var(--accent);font-weight:600;animation:accent-shift 5s ease-in-out infinite}
 .profile{display:block}
-.profile .photo{float:right;width:26rem;margin:.15rem 0 1rem 2rem;aspect-ratio:1;border-radius:50%;overflow:hidden;shape-outside:circle(50%)}
-.photo img,.photo .ini{display:block;width:100%;height:100%;border:0;border-radius:50%;object-fit:contain;background:transparent;box-shadow:none}
+.profile .photo{float:left;width:26rem;margin:.15rem 2rem 1rem 0;aspect-ratio:1;overflow:hidden}
+.photo img,.photo .ini{display:block;width:100%;height:100%;border:0;border-radius:0;object-fit:contain;background:transparent;box-shadow:none}
 .photo .ini{background:var(--panel);color:var(--accent);font-size:3.5rem}
 .bio{display:block}
 .bio p{margin:0 0 1.35rem}
@@ -131,5 +137,8 @@ body[data-page="publications.html"] h1{margin-bottom:2rem}
   .profile .photo{float:none;width:18rem;margin:1.5rem 0 1.75rem}
   .social{margin-top:1.25rem}
   .header-actions{gap:.8rem}
+  .top-social{gap:.7rem}
+  .top-social a{font-size:1.1rem}
+  .top-social .ai-google-scholar{font-size:1.25rem}
   .rows th{width:auto}
 }
