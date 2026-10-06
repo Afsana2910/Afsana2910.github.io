@@ -1,10 +1,27 @@
 // Shared header, footer, photo fallback and publication list.
 const PAGES = [["index.html", "About"], ["publications.html", "Publications"]];
 const page = document.body.dataset.page;
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
 document.getElementById("top").innerHTML = `<div class="wrap">
   <a class="brand" href="index.html">Afsana Khan</a>
-  <nav aria-label="Main">${PAGES.map(([h, n]) => `<a href="${h}"${h === page ? ' aria-current="page"' : ""}>${n}</a>`).join("")}</nav></div>`;
+  <div class="header-actions">
+    <nav aria-label="Main">${PAGES.map(([h, n]) => `<a href="${h}"${h === page ? ' aria-current="page"' : ""}>${n}</a>`).join("")}</nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+  </div></div>`;
 document.getElementById("foot").innerHTML = `<div class="wrap">© ${new Date().getFullYear()} Afsana Khan.</div>`;
+
+const themeToggle = document.querySelector(".theme-toggle");
+const setTheme = theme => {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("theme", theme);
+  const dark = theme === "dark";
+  themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  themeToggle.setAttribute("aria-pressed", String(dark));
+  themeToggle.innerHTML = `<i class="fa-solid fa-${dark ? "sun" : "moon"}" aria-hidden="true"></i>`;
+};
+setTheme(document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+themeToggle.addEventListener("click", () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark"));
 
 const img = document.querySelector(".photo img");
 if (img) img.addEventListener("error", () => { const d = document.createElement("div"); d.className = "ini"; d.textContent = "AK"; img.replaceWith(d); });
