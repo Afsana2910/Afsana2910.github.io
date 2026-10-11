@@ -1,7 +1,7 @@
 // Shared header, footer, photo fallback and publication list.
 const PAGES = [["index.html", "About"], ["publications.html", "Publications"]];
 const SOCIAL = [
-  ["mailto:afsana.291094@gmail.com", "Email", "fa-solid fa-envelope"],
+  ["mailto:a.khan@maastrichtuniversity.nl", "Email", "fa-solid fa-envelope"],
   ["https://scholar.google.com/citations?hl=en&user=tP5eQtcAAAAJ&view_op=list_works&authuser=1&sortby=pubdate", "Google Scholar", "ai ai-google-scholar"],
   ["https://github.com/Afsana2910", "GitHub", "fa-brands fa-github"],
   ["https://www.linkedin.com/in/afsanakhan2910/", "LinkedIn", "fa-brands fa-linkedin-in"],
